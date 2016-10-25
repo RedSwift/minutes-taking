@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const userCtrl = require('./server/controller/userCtrl');
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -28,3 +29,4 @@ app.get('/', function (req, res) {
     res.status(200).json({Text: 'IT WORKS'});
 });
 
+app.get('/api/register', userCtrl.register);
